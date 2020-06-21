@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core">
+  
+  <h:head>
+    <title>Manage Stores</title>
+  </h:head>
+  
+  <f:metadata>
+  <f:event type="preRenderView" 
+      listener="#{storeController.loadStores()}"/>
+  </f:metadata>
+   <h:outputStylesheet library="css" name="tables.css"/>
+   <h:outputStylesheet library="css" name="styles.css"/>
+   
+  <h:body>
+  <h:messages class="error" globalOnly="true"></h:messages>
+  	
+  	<h:button styleClass="addbutton" value="Add Store" outcome="add_store" />
+  	
+  	<h:dataTable value="#{storeController.stores}" var="s"
+  		headerClass="table-header"
+		rowClasses="table-odd-row,table-even-row" id="dataTable">
+
+	<h:column>
+ 	  <f:facet name="header">Store ID</f:facet>
+ 	  #{s.storeID}
+	</h:column>
+	
+	<h:column>
+ 	  <f:facet name="header">Store Name</f:facet>
+ 	  #{s.name}
+	</h:column>
+	
+	<h:column>
+ 	  <f:facet name="header">Store Founded</f:facet>
+ 	  #{s.founded}
+	</h:column>
+	
+	<h:column>
+	  <f:facet name="header">Action</f:facet>
+	  <h:form>
+	  <h:commandLink style="margin-right: 5px;" value="Show Products " action="#{storeProductController.productStorePageLoad(s.storeID)}" />  
+	   <h:commandLink value="Delete " action="#{storeController.deleteStore(s.storeID,s.name)}"/>
+	   </h:form>
+	</h:column>
+
+	</h:dataTable>
+	<h:outputLink value="index.xhtml">Home</h:outputLink>
+  </h:body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+ 
+   
+<h:head>
+	<title>Add Store</title>
+	<h:outputStylesheet library="css" name="styles.css"/>
+</h:head>
+
+<h:body>
+<h:messages class="error" globalOnly="true"></h:messages>
+<h2>Add Store</h2>
+  <h:outputStylesheet library="css" name="styles.css"/>
+<h:form>
+	<div style="margin-bottom: 20px">
+   	  <label>Store Name:</label>
+   	  
+      <h:inputText 
+      required="true" 
+      requiredMessage="Name is mandatory" 
+      class="input" 
+      value="#{store.name}"
+      id="sName"/>
+      <br />
+       <h:message styleClass="error" for="sName"/>
+      <br />
+   </div> 
+      
+   <div style="margin-bottom: 20px">
+   <label  class="label">Founded:</label>
+      <h:inputText 
+      required="true" 
+      requiredMessage="Founded is mandatory" 
+      class="input" value="#{store.founded}"
+      id="sFounded" />
+      
+      <br />
+      <h:message styleClass="error" for="sFounded"/>
+      <br />
+   </div>
+      <h:commandButton value="Add" style="margin-bottom:10px;" action="#{storeController.addStore(store)}"/>
+</h:form>
+<h:outputLink value="index.xhtml" style="margin-right: 5px;">Home</h:outputLink>
+<h:outputLink value="list_stores.xhtml">Stores</h:outputLink>
+</h:body>
+</html>

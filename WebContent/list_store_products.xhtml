@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:f="http://xmlns.jcp.org/jsf/core">
+  
+  <h:head>
+    <title>Manage Store Products</title>
+  </h:head>
+  
+  <f:metadata>
+  <f:event type="preRenderView" 
+      listener="#{storeProductController.loadStoreProduct()}"/>
+  </f:metadata>
+   <h:outputStylesheet library="css" name="tables.css"/>
+  
+  <h:body>
+  
+  <h2>Store/Product Details</h2>
+  
+  	<h:dataTable value="#{storeProductController.storeproduct}" var="ps"
+  		headerClass="table-header"
+		rowClasses="table-odd-row,table-even-row">
+
+	<h:column>
+ 	  <f:facet name="header">Store ID</f:facet>
+ 	  #{ps.sid}
+	</h:column>
+	
+	<h:column>
+ 	  <f:facet name="header">Store Name</f:facet>
+ 	  #{ps.sname}
+	</h:column>
+	
+	<h:column>
+ 	  <f:facet name="header">Founded</f:facet>
+ 	  #{ps.founded}
+	</h:column>
+	
+	<h:column>
+ 	  <f:facet name="header">Product ID</f:facet>
+ 	  #{ps.id}
+	</h:column>
+	
+	<h:column>
+ 	  <f:facet name="header">Product Name</f:facet>
+ 	  #{ps.prodName}
+	</h:column> 
+	
+	<h:column>
+ 	  <f:facet name="header">Price</f:facet>
+ 	  #{ps.price}
+	</h:column>
+	
+	
+
+	</h:dataTable>
+	
+	<h:outputLink value="index.xhtml" style="margin-right: 5px;">Home</h:outputLink>
+	<h:outputLink value="list_stores.xhtml">Stores</h:outputLink>
+	
+  </h:body>
+</html>
